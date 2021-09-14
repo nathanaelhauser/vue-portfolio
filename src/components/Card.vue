@@ -42,12 +42,16 @@ export default defineComponent({
   },
   methods: {
     handleMouseEnter(e: Event) {
-      // e.target.children[0].className = "card-content";
-      console.log(e);
+      const target = e.target as HTMLDivElement;
+      if (target && target.children.length) {
+        target.children[0].className = "card-content";
+      }
     },
     handleMouseLeave(e: Event) {
-      // e.target.children[0].className = "card-content hidden";
-      console.log(e);
+      const target = e.target as HTMLDivElement;
+      if (target && target.children.length) {
+        target.children[0].className = "card-content hidden";
+      }
     },
   },
 });
