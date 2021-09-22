@@ -2,16 +2,14 @@
   <div class="portfolio">
     <h1>This is the portfolio page</h1>
 
-    <!-- Setup a loop of cards -->
-    <div class="cards">
+    <!-- Setup a loop of Planets -->
+    <div class="planets">
       <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <Planet fill="green" />
+      <Planet fill="red" />
+      <Planet fill="blue" />
+      <Planet fill="#4DA6FF" />
+      <Planet :radius="700" />
     </div>
   </div>
 </template>
@@ -19,9 +17,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Card from "@/components/Card.vue";
+import Planet from "@/components/Planet.vue";
 
 export default defineComponent({
-  components: { Card },
+  components: { Card, Planet },
 });
 </script>
 
