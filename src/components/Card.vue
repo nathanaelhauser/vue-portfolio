@@ -67,6 +67,10 @@ button {
 .card {
   width: 400px;
   height: 300px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .card-content {
   background-color: rgba(255, 255, 255, 0.5);
