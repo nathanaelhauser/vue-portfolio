@@ -1,30 +1,5 @@
 <template>
-  <svg :width="diameter" :height="diameter">
-    <defs>
-      <pattern
-        id="image"
-        x="0"
-        y="0"
-        patternUnits="userSpaceOnUse"
-        :width="diameter"
-        :height="diameter"
-      >
-        <image
-          x="0"
-          y="0"
-          xlink:href="https://source.unsplash.com/random/400x300"
-        ></image>
-      </pattern>
-    </defs>
-    <circle
-      :cx="radius"
-      :cy="radius"
-      :r="planetRadius"
-      :stroke="borderColor"
-      stroke-width="3"
-      :fill="fill"
-    />
-  </svg>
+  <div :style="planetStyle"></div>
 </template>
 
 <script lang="ts">
@@ -36,22 +11,47 @@ export default defineComponent({
       default: 100,
       type: Number,
     },
+    backgroundImage: {
+      default: "https://source.unsplash.com/random/400x300",
+      type: String,
+    },
+    backgroundRepeat: {
+      default: "no-repeat",
+      type: String,
+    },
+    backgroundSize: {
+      default: "cover",
+      type: String,
+    },
     borderColor: {
       default: "black",
       type: String,
     },
-    fill: {
-      default: "url(#image)",
+    borderStyle: {
+      default: "solid",
+      type: String,
+    },
+    borderWidth: {
+      default: "thick",
       type: String,
     },
   },
-  computed: {
-    diameter() {
-      return 2 * this.radius;
-    },
-    planetRadius() {
-      return Math.floor(this.radius * 0.8);
-    },
+  data() {
+    const sideLength = this.radius * 2;
+
+    return {
+      planetStyle: {
+        "background-image": `url(${this.backgroundImage})`,
+        "background-repeat": this.backgroundRepeat,
+        "background-size": this.backgroundSize,
+        "border-radius": `${this.radius}px`,
+        "border-color": this.borderColor,
+        "border-style": this.borderStyle,
+        "border-width": this.borderWidth,
+        width: `${sideLength}px`,
+        height: `${sideLength}px`,
+      },
+    };
   },
 });
 </script>
